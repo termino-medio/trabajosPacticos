@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Estilos para el header */
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+}
+
+header .container {
+  max-width: 1500px;
+  margin: 0 auto;  /* Centra el contenedor */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;  /* Alinea los elementos del header con espacio entre ellos */
+  align-items: center;  /* Alinea los elementos verticalmente en el centro */
+}
+
+header .container h1 {
+  font-size: 32px; /* Tamaño adecuado para el título */
+  margin: 0;  /* Elimina márgenes si los hay */
+  text-align: center;  /* Centra el texto dentro del h1 */
+  flex-grow: 1; /* Hace que el título ocupe el espacio disponible */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-end;  /* Alinea el menú a la derecha */
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu li {
+  margin: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #4CAF50;
+}
+
+.menu-toggle {
+  display: none; 
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Estilos para el contenido */
+.container-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;  /* Centra el contenido */
+  padding: 20px;
+}
+
+/* Centrado general para el contenedor de la lista */
+ul {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos de la lista de arriba a abajo */
+  align-items: center;     /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  text-align: center;      /* Centra el texto dentro de los <li> */
+  margin: 0;               /* Elimina márgenes */
+  padding: 0;              /* Elimina relleno */
+}
+
+/* Estilo individual para cada elemento <li> */
+ul li {
+  font-size: 18px;         /* Tamaño de fuente */
+  margin: 10px 0;          /* Márgenes entre los elementos de lista */
+  color: #333;             /* Color de texto */
+  line-height: 1.5;        /* Altura de línea para mejor legibilidad */
+}
+
+/* Si deseas agregar más estilo, como color de fondo o bordes */
+ul li:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el ratón */
+  border-radius: 5px;         /* Bordes redondeados */
+  padding: 10px;              /* Relleno al hacer hover */
+}
+
+.productos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.producto {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.producto h3 {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #333;
+}
+
+.producto p {
+  font-size: 20px;
+  color: #666;
+  margin-top: 10px;
+}
+
+.producto strong {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.boton {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.boton:hover {
+  background-color: #45a049;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer .footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+footer .footer-content h2 {
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+footer .social-links {
+  margin-top: 20px;
+}
+
+footer .social-links a {
+  color: white;
+  font-size: 24px;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+footer .social-links a:hover {
+  color: #4CAF50;
+}
+
+footer .privacy-links {
+  margin-top: 10px;
+}
+
+footer .privacy-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+footer .privacy-links a:hover {
+  color: #4CAF50;
+}
+
+@media (max-width: 1300px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 0;
+  }
+
+  .menu li {
+    margin-bottom: 10px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu a {
+    font-size: 14px;
+  }
+}

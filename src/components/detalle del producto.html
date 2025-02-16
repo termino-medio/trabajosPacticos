@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Producto</title>
+  <link rel="stylesheet" href="./detalle del producto.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Detalle del Producto</h1>
+    </div>
+  </header>
+
+  <div class="container-content" id="detalle del producto">
+    
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <script>
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    if (!productId) {
+      document.getElementById('detalle del producto').innerHTML = '<p>ID de producto no válido.</p>';
+      return;
+    }
+
+    
+    fetch(`https://fakestoreapi.com/products/${productId}`)
+      .then(response => response.json())
+      .then(product => {
+        const productoDetalle = document.getElementById('detalle del producto');
+
+        
+        const img = document.createElement('img');
+        img.src = product.image || 'default_image.jpg';  
+        img.alt = product.title;
+
+        
+        const title = document.createElement('h3');
+        title.textContent = product.title;
+
+        
+        const description = document.createElement('p');
+        description.textContent = product.description;
+
+        
+        const price = document.createElement('p');
+        price.innerHTML = `<strong>Precio: $${product.price}</strong>`;
+
+        
+        const btnCompra = document.createElement('button');
+        btnCompra.classList.add('boton');
+        btnCompra.textContent = "Comprar";
+        btnCompra.addEventListener('click', () => {
+          alert("Producto añadido al carrito");
+        });
+
+        
+        productoDetalle.appendChild(img);
+        productoDetalle.appendChild(title);
+        productoDetalle.appendChild(description);
+        productoDetalle.appendChild(price);
+        productoDetalle.appendChild(btnCompra);
+      })
+      .catch(error => {
+        console.error('Error al obtener el producto:', error);
+        document.getElementById('producto-detalle').innerHTML = '<p>Ocurrió un error al cargar los detalles del producto.</p>';
+      });
+  </script>
+
+</body>
+</html>

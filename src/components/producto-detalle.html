@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Producto</title>
+  <link rel="stylesheet" href="./producto-detalle.css">
+</head>
+<body>
+  <header>
+    <h1>Detalle del Producto</h1>
+  </header>
+
+  <div id="producto-detalle" class="producto detalle">
+
+    
+    
+  </div>
+
+  <script>
+  
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get('id');
+
+console.log('Product ID:', productId);  
+
+if (productId) {
+ 
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then(response => response.json())
+    .then(product => {
+     
+      const detalleDiv = document.getElementById('producto detalle');
+
+      const img = document.createElement('img');
+      img.src = product.image;
+      img.alt = product.title;
+      detalleDiv.appendChild(img);
+
+      const title = document.createElement('h3');
+      title.textContent = product.title;
+      detalleDiv.appendChild(title);
+
+      const description = document.createElement('p');
+      description.textContent = product.description;
+      detalleDiv.appendChild(description);
+
+      const price = document.createElement('p');
+      price.innerHTML = `<strong>Precio: $${product.price}</strong>`;
+      detalleDiv.appendChild(price);
+
+      const button = document.createElement('button');
+      button.textContent = 'Comprar';
+      detalleDiv.appendChild(button);
+
+      button.addEventListener('click', () => {
+         alert('Producto añadido al carrito');
+      });
+    })
+    .catch(error => {
+      console.error('Error cargando el detalle del producto:', error);
+      document.getElementById('producto-detalle').innerHTML = "<p>No se pudo cargar el detalle del producto.</p>";
+    });
+} else {
+  document.getElementById('producto-detalle').innerHTML = "<p>ID de producto no válido.</p>";
+}
+
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>

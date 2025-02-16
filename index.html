@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo Practico 2</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Productos Disponibles</h1>
+
+      <div class="nav-container">
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
+          <i class="bx bx-menu"></i>
+        </button>
+        <ul id="menu" class="menu">
+          <li><a href="./src/components/login.html" class="boton">Iniciar Sesión</a></li>
+          <li><a href="./src/components/login.html" class="boton">Login</a></li>
+          <li><a href="./src/components/detalle del producto.html" class="boton">Detalle del Producto</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <ul>
+    <li>Disfruta de estos productos y más.</li>
+    <li>Si quieres ver todo lo disponible que se encuentra en la tienda, solo inicia sesión y descubre todo lo que tenemos para ofrecerte.</li>
+  </ul>
+
+  <div id="productos-lista" class="productos-lista">
+    
+  </div>
+
+  <h2>Aquí encontrarás el detalle del producto que deseas comprar.</h2>
+  <a target="_blank" href="./src/components/detalle del producto.html" class="boton">Ir al detalle del producto</a>
+
+  <h2>Si deseas que te contactemos para recibir lo más nuevo antes que nadie solo déjanos tus datos y te contactamos.</h2>
+  <a target="_blank" href="./src/components/registro.html" class="boton">Ir al registro</a>
+
+  
+  <script>
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => {
+        const productosLista = document.getElementById('productos-lista');
+
+        data.slice(0, 4).forEach(product => {
+          const productoDiv = document.createElement('div');
+          productoDiv.classList.add('producto');
+
+          const img = document.createElement('img');
+          img.src = product.image || 'default_image.jpg';
+          img.alt = product.title;
+          productoDiv.appendChild(img);
+
+          const title = document.createElement('h3');
+          title.textContent = product.title;
+          productoDiv.appendChild(title);
+
+          const description = document.createElement('p');
+          description.textContent = product.description;
+          productoDiv.appendChild(description);
+
+          const price = document.createElement('p');
+          price.innerHTML = `<strong>valor de c/u: $${product.price}</strong>`;
+          productoDiv.appendChild(price);
+
+          const detalleLink = document.createElement('a');
+          detalleLink.href = `./src/components/producto-detalle.html?id=${product.id}`;  
+          detalleLink.classList.add('btn-detalle');
+          detalleLink.textContent = 'Ver detalle';
+
+          productoDiv.appendChild(detalleLink);
+
+          productosLista.appendChild(productoDiv);
+        });
+      })
+      .catch(error => {
+        console.error('Error cargando los productos:', error);
+      });
+  </script>
+
+<footer>
+  <div class="footer-content">
+    <h2>Tu Tienda Online</h2>
+    <p>&copy; 2025 Todos los derechos reservados</p>
+
+    <div class="social-links">
+      <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">
+        <i class="bx bxl-facebook"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">
+        <i class="bx bxl-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+        <i class="bx bxl-instagram"></i>
+      </a>
+    </div>
+
+    <div class="privacy-links">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+
+</html>
